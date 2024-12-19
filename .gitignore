@@ -1,2 +1,5 @@
 /mlproject.egg-info/
 /logs/
+*/__pycache__/
+/artifacts/
+/data/
