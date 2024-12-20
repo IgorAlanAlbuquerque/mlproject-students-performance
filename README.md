@@ -24,7 +24,7 @@ Na pasta .ebextensions, está o arquivo de configuração usado para fazer o dep
 
 O arquivo Dockerfile, localizado na raiz do projeto (ou onde está, se aplicável), é usado para fazer o deploy da aplicação como uma imagem Docker, por exemplo, em uma instância EC2.
 
-Na pasta .github/workflows, está o arquivo YAML responsável pelo pipeline de CI/CD que utiliza o AWS ECR para armazenar as imagens Docker.
+Na pasta .github/workflows, está o arquivo YAML responsável pelo pipeline de CI/CD que utiliza o AWS ECS para armazenar as imagens Docker.
 
 É possível modificar o pipeline para usa Azure ACR.
 
