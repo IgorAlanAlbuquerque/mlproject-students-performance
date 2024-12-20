@@ -3,5 +3,8 @@
 src/__pycache__/
 src/components/__pycache__/
 src/pipeline/__pycache__/
-/artifacts/
+/artifacts/data.csv
+/artifacts/test.csv
+/artifacts/train.csv
 /data/
+/catboost_info/
