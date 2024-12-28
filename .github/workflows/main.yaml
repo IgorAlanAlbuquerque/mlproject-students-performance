@@ -6,10 +6,10 @@ on:
 
 env:
   AWS_REGION: sa-east-1                       # Região do Brasil
-  ECR_REPOSITORY: student-performance/student-performance-repository # Nome do repositório ECR
+  ECR_REPOSITORY: student-performance-repository # Nome do repositório ECR
   ECS_SERVICE: student-performance-service     # Nome do serviço ECS
   ECS_CLUSTER: student-performance-cluster     # Nome do cluster ECS
-  ECS_TASK_DEFINITION: .aws/task-definition.json # Caminho para o arquivo de definição de tarefa ECS
+  ECS_TASK_DEFINITION: ./task-definition.json # Caminho para o arquivo de definição de tarefa ECS
   CONTAINER_NAME: student-performance-container # Nome do container
 
 permissions:
@@ -31,6 +31,16 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
+
+    - name: Verify if ECR repository exists, create if not
+      run: |
+        REPO_EXISTS=$(aws ecr describe-repositories --repository-names ${{ env.ECR_REPOSITORY }} --region ${{ env.AWS_REGION }} --query 'repositories[0].repositoryName' --output text)
+        if [ "$REPO_EXISTS" != "${{ env.ECR_REPOSITORY }}" ]; then
+          echo "Repository does not exist. Creating repository..."
+          aws ecr create-repository --repository-name ${{ env.ECR_REPOSITORY }} --region ${{ env.AWS_REGION }}
+        else
+          echo "Repository exists."
+        fi
 
     - name: Login to Amazon ECR
       id: login-ecr
