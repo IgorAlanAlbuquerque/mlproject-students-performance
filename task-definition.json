@@ -1,19 +1,19 @@
 {
-    "family": "student-performance-task",
-    "networkMode": "awsvpc",
-    "containerDefinitions": [
-      {
-        "name": "student-performance-container",
-        "image": "student-performance-repository:latest",
-        "memory": 2048,
-        "cpu": 256,
-        "essential": true,
-        "portMappings": [
-          {
-            "containerPort": 80,
-            "hostPort": 80
-          }
-        ]
-      }
-    ]
-  }
+  "family": "student-performance-task",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "student-performance-container",
+      "image": "student-performance-repository:latest",
+      "memory": 3072,
+      "cpu": 1024,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80
+        }
+      ]
+    }
+  ]
+}
