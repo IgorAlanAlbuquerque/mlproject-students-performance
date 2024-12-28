@@ -5,7 +5,7 @@
       {
         "name": "student-performance-container",
         "image": "student-performance-repository:latest",
-        "memory": 512,
+        "memory": 2048,
         "cpu": 256,
         "essential": true,
         "portMappings": [
